@@ -6,7 +6,7 @@
 #         self.right = right
 class Solution:
     def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
-        visited = []
+        visited = set()
         return self.dfs(root, k, visited)
         
         
@@ -17,6 +17,6 @@ class Solution:
         if (k - node.val) in visited:
             return True
         
-        visited.append(node.val)
+        visited.add(node.val)
         
         return self.dfs(node.left, k, visited) or self.dfs(node.right, k, visited)
